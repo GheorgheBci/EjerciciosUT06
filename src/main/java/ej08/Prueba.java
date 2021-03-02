@@ -17,5 +17,12 @@ public class Prueba {
         for (Azar listaNumero : listaNumeros) {
             System.out.println(listaNumero.lanzar());
         }
+        
+        /*
+        Si el método es final no se puede sobreescribir en las 
+        clases hijas
+        
+        Si la clase es final no puede tener hijas
+        */
     }
 }

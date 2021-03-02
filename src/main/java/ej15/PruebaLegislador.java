@@ -18,6 +18,10 @@ public class PruebaLegislador {
 
         for (Legislador listaLegisladore : listaLegisladores) {
             System.out.println(listaLegisladore.getCamaraEnQueTrabaja());
+
+            if (listaLegisladore instanceof Diputado) {
+                ((Diputado) listaLegisladore).getNumeroAsiento();
+            }
         }
 
         for (Legislador listaLegisladore : listaLegisladores) {
