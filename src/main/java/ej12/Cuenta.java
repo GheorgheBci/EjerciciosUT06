@@ -14,17 +14,25 @@ public abstract class Cuenta {
     private double saldo;
     private Persona cliente;
 
-    public Cuenta(Persona cliente) {
+    public Cuenta(Persona cliente, double saldo) {
         this.cliente = cliente;
-        this.saldo = 0;
-        int digito = ra.nextInt(9);
+        this.saldo = saldo;
+        this.numeroCuenta = generarDigitos();
+    }
+
+    private String generarDigitos() {
+        String digitos;
+        String todosDigitos = "";
 
         do {
+            int digito = ra.nextInt(9);
+            digitos = Integer.toString(digito);
 
-            this.numeroCuenta += digito;
+            todosDigitos += digitos;
 
-        } while (numeroCuenta.length() == 20);
+        } while (todosDigitos.length() != 20);
 
+        return todosDigitos;
     }
 
     public abstract void actualizarSaldo();
@@ -63,4 +71,8 @@ public abstract class Cuenta {
         this.cliente = cliente;
     }
 
+    @Override
+    public String toString() {
+        return "Cuenta{" + "numeroCuenta=" + numeroCuenta + ", saldo=" + saldo + ", cliente=" + cliente + '}';
+    }
 }

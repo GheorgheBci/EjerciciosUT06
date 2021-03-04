@@ -9,19 +9,18 @@ public class CuentaCorriente extends Cuenta {
     private double interes;
     private double saldoMin;
 
-    public CuentaCorriente(double interes, double saldoMin, Persona cliente) {
-        super(cliente);
+    public CuentaCorriente(Persona cliente, double saldo) {
+        super(cliente, saldo);
         this.interes = 1.5;
         this.saldoMin = 1000;
     }
 
     @Override
     public void actualizarSaldo() {
-
         if (this.getSaldo() > this.saldoMin) {
-            this.getSaldo() += (this.saldoMin * this.interes);
+            System.out.println("Tu saldo en este momento es: " + (this.getSaldo() + (this.getSaldo() * this.interes)));
         } else {
-            saldo = this.getSaldo() + (this.getSaldo() + this.interes);
+            System.out.println("Tu saldo en este momento es: " + (this.getSaldo() + (this.getSaldo() + this.interes)));
         }
     }
 
@@ -50,6 +49,6 @@ public class CuentaCorriente extends Cuenta {
 
     @Override
     public String toString() {
-        return "CuentaCorriente{" + "interes=" + interes + ", saldoMin=" + saldoMin + '}';
+        return super.toString() + "CuentaCorriente{" + "interes=" + interes + ", saldoMin=" + saldoMin + '}';
     }
 }
