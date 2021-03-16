@@ -6,37 +6,28 @@ package ej12;
  */
 public class CuentaCorriente extends Cuenta {
 
-    private double interes;
+    private final double INTERES = 1.5;
     private double saldoMin;
 
-    public CuentaCorriente(Persona cliente, double saldo) {
-        super(cliente, saldo);
-        this.interes = 1.5;
-        this.saldoMin = 1000;
+    public CuentaCorriente(double saldoMin, Persona cliente) {
+        super(cliente);
+        this.saldoMin = saldoMin;
     }
 
     @Override
-    public void actualizarSaldo() {
-        if (this.getSaldo() > this.saldoMin) {
-            System.out.println("Tu saldo en este momento es: " + (this.getSaldo() + (this.getSaldo() * this.interes)));
+    public void actualizarSaldo(double saldo) {
+        if (this.getSaldo() > 1000) {
+            this.setSaldoMin(this.getSaldo() + (this.getSaldo() * INTERES));
         } else {
-            System.out.println("Tu saldo en este momento es: " + (this.getSaldo() + (this.getSaldo() + this.interes)));
+            this.setSaldoMin(this.getSaldo() + (this.getSaldo() + INTERES));
         }
     }
 
     @Override
     public void retirar(double saldo) {
-        while (this.getSaldo() >= this.saldoMin) {
-            saldo -= this.getSaldo();
+        while (this.getSaldo() > this.saldoMin) {
+            this.setSaldoMin(saldo -= this.getSaldo());
         }
-    }
-
-    public double getInteres() {
-        return interes;
-    }
-
-    public void setInteres(double interes) {
-        this.interes = interes;
     }
 
     public double getSaldoMin() {
@@ -45,10 +36,5 @@ public class CuentaCorriente extends Cuenta {
 
     public void setSaldoMin(double saldoMin) {
         this.saldoMin = saldoMin;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + "CuentaCorriente{" + "interes=" + interes + ", saldoMin=" + saldoMin + '}';
     }
 }

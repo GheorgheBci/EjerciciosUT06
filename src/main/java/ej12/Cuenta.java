@@ -14,13 +14,13 @@ public abstract class Cuenta {
     private double saldo;
     private Persona cliente;
 
-    public Cuenta(Persona cliente, double saldo) {
+    public Cuenta(Persona cliente) {
         this.cliente = cliente;
-        this.saldo = saldo;
+        this.saldo = 0;
         this.numeroCuenta = generarDigitos();
     }
 
-    private String generarDigitos() {
+    private static String generarDigitos() {
         String digitos;
         String todosDigitos = "";
 
@@ -35,17 +35,9 @@ public abstract class Cuenta {
         return todosDigitos;
     }
 
-    public abstract void actualizarSaldo();
+    public abstract void actualizarSaldo(double saldo);
 
     public abstract void retirar(double saldo);
-
-    public static Random getRa() {
-        return ra;
-    }
-
-    public static void setRa(Random ra) {
-        Cuenta.ra = ra;
-    }
 
     public String getNumeroCuenta() {
         return numeroCuenta;
@@ -69,10 +61,5 @@ public abstract class Cuenta {
 
     public void setCliente(Persona cliente) {
         this.cliente = cliente;
-    }
-
-    @Override
-    public String toString() {
-        return "Cuenta{" + "numeroCuenta=" + numeroCuenta + ", saldo=" + saldo + ", cliente=" + cliente + '}';
     }
 }
